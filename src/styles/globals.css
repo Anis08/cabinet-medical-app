@@ -1,0 +1,241 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 221.2 83.2% 53.3%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222.2 84% 4.9%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96%;
+    --accent-foreground: 222.2 84% 4.9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221.2 83.2% 53.3%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 222.2 84% 4.9%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 224.3 76.3% 94.1%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Styles spécifiques pour l'écran connecté */
+.display-screen {
+  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+  color: white;
+  min-height: 100vh;
+}
+
+.display-screen .now-serving {
+  font-size: 3rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.display-screen .next-patients {
+  font-size: 1.5rem;
+  opacity: 0.9;
+}
+
+.display-screen .clock {
+  font-size: 2rem;
+  font-family: 'Courier New', monospace;
+}
+
+/* Animations pour les badges de priorité */
+.urgence-critique {
+  @apply bg-red-500 text-white animate-pulse;
+}
+
+.urgence-prioritaire {
+  @apply bg-orange-500 text-white;
+}
+
+.urgence-standard {
+  @apply bg-blue-500 text-white;
+}
+
+/* Style pour les minuteries */
+.timer {
+  font-family: 'Courier New', monospace;
+  font-weight: bold;
+}
+
+.timer.long-wait {
+  @apply text-red-600;
+}
+
+.timer.medium-wait {
+  @apply text-orange-600;
+}
+
+.timer.short-wait {
+  @apply text-green-600;
+}
+
+/* Styles pour les cartes KPI */
+.kpi-card {
+  @apply bg-white rounded-lg shadow-md p-6 border border-gray-200;
+  transition: all 0.2s ease-in-out;
+}
+
+.kpi-card:hover {
+  @apply shadow-lg transform scale-105;
+}
+
+.kpi-value {
+  @apply text-3xl font-bold;
+}
+
+.kpi-label {
+  @apply text-sm font-medium text-gray-500 uppercase tracking-wide;
+}
+
+/* Styles pour les graphiques */
+.chart-container {
+  @apply bg-white rounded-lg shadow-md p-6;
+  min-height: 400px;
+}
+
+/* Responsive design pour l'écran connecté */
+@media (max-width: 768px) {
+  .display-screen .now-serving {
+    font-size: 2rem;
+  }
+  
+  .display-screen .next-patients {
+    font-size: 1.2rem;
+  }
+  
+  .display-screen .clock {
+    font-size: 1.5rem;
+  }
+}
+
+/* Styles pour les formulaires */
+.form-input {
+  @apply block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent;
+}
+
+.form-label {
+  @apply block text-sm font-medium text-gray-700 mb-1;
+}
+
+.form-error {
+  @apply text-red-600 text-sm mt-1;
+}
+
+/* Styles pour les tables */
+.table-container {
+  @apply overflow-x-auto shadow ring-1 ring-black ring-opacity-5 md:rounded-lg;
+}
+
+.table {
+  @apply min-w-full divide-y divide-gray-300;
+}
+
+.table-header {
+  @apply bg-gray-50;
+}
+
+.table-header-cell {
+  @apply px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wide;
+}
+
+.table-row {
+  @apply bg-white;
+}
+
+.table-row:nth-child(even) {
+  @apply bg-gray-50;
+}
+
+.table-cell {
+  @apply px-6 py-4 whitespace-nowrap text-sm text-gray-900;
+}
+
+/* Animations */
+.fade-in {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.slide-in {
+  animation: slideIn 0.3s ease-in-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Loading states */
+.loading-spinner {
+  @apply inline-block h-4 w-4 animate-spin rounded-full border-2 border-solid border-current border-r-transparent motion-reduce:animate-[spin_1.5s_linear_infinite];
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  .print-break {
+    page-break-before: always;
+  }
+}
